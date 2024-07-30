@@ -3,6 +3,7 @@ import NoItems from "../components/NoItems";
 import prisma from "../lib/db";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import ListingCard from "../components/ListingCard";
+import { unstable_noStore as noStore } from "next/cache";
 
 interface Props {}
 
@@ -34,6 +35,7 @@ async function getData(userId: string | undefined) {
 }
 
 async function Page(props: Props) {
+  noStore();
   const {} = props;
 
   const { getUser } = getKindeServerSession();
